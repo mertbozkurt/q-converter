@@ -1,38 +1,213 @@
 .App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.app-header {
+  margin-bottom: 40px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-header h1 {
+  color: #2c3e50;
+  font-size: 2.5rem;
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.token-section {
+  margin-bottom: 30px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.input-group {
   display: flex;
-  flex-direction: column;
+  gap: 12px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  font-weight: 600;
+  min-width: 120px;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.account-info {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.info-item {
+  display: flex;
+  gap: 10px;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #666;
+}
+
+.file-upload {
+  margin-top: 20px;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  font-size: 16px;
+}
+
+.primary-button {
+  background: #5138EE;
   color: white;
+  width: 30%;
 }
 
-.App-link {
-  color: #61dafb;
+.primary-button:hover {
+  background: #4128DE;
+  transform: translateY(-1px);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.secondary-button {
+  background: #ecf0f1;
+  color: #2c3e50;
+}
+
+.secondary-button:hover {
+  background: #bdc3c7;
+}
+
+.secondary-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.json-preview {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.json-preview h2 {
+  color: #2c3e50;
+  margin-top: 0;
+}
+
+.json-preview pre {
+  background: white;
+  padding: 15px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.json-preview table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.json-preview td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.json-preview td:first-child {
+  font-weight: bold;
+  background-color: #f5f5f5;
+  width: 40%;
+}
+
+.analyze-section {
+  margin: 40px 0;
+}
+
+.analyze-option {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #E8E8E8;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.analyze-option:hover {
+  border-color: #5138EE;
+  background: rgba(81, 56, 238, 0.05);
+}
+
+.analyze-option img {
+  margin-right: 16px;
+  width: 24px;
+  height: 24px;
+}
+
+.analyze-type-button {
+  background: #E8EDFF;
+  color: #5138EE;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 14px;
+  display: inline-block;
+  margin-bottom: 32px;
+}
+
+/* New progress bar styles */
+.progress-bar-container {
+  width: 100%;
+  height: 4px;
+  background-color: #E8E8E8;
+  border-radius: 2px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #5138EE;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.progress-status {
+  font-size: 14px;
+  color: #666;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.environment-select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  min-width: 200px;
 }

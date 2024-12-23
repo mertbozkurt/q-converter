@@ -1,0 +1,616 @@
+{
+    "key": null,
+    "states": [
+        {
+            "number_of_random_elements": null,
+            "key": "P1",
+            "name": "Migration Survey State 1",
+            "elements": [
+                {
+                    "key": "P1E1",
+                    "type": "question",
+                    "template": null,
+                    "triggers": null,
+                    "text_color": null,
+                    "order": 0,
+                    "visible": true,
+                    "detail": {
+                        "key": "QID1",
+                        "scale": null,
+                        "extra": {
+                            "layout": "horizontal",
+                            "max_option_count": 1
+                        },
+                        "style": "radio",
+                        "weight": null,
+                        "options": [
+                            {
+                                "description": null,
+                                "question_body": {
+                                    "EN": "Tekli Seçim soru tipi"
+                                },
+                                "key": "Option 1",
+                                "weight": 0,
+                                "order": 2,
+                                "statement_common_option_id": null,
+                                "body": {
+                                    "EN": "Mert"
+                                }
+                            },
+                            {
+                                "description": null,
+                                "question_body": {
+                                    "EN": "Tekli Seçim soru tipi"
+                                },
+                                "key": "Option 2",
+                                "weight": 0,
+                                "order": 1,
+                                "statement_common_option_id": null,
+                                "body": {
+                                    "EN": "İbrahim"
+                                }
+                            },
+                            {
+                                "description": null,
+                                "question_body": {
+                                    "EN": "Tekli Seçim soru tipi"
+                                },
+                                "key": "Option 3",
+                                "weight": 0,
+                                "order": 0,
+                                "statement_common_option_id": null,
+                                "body": {
+                                    "EN": "Bozkurt"
+                                }
+                            }
+                        ],
+                        "body": {
+                            "EN": "Tekli Seçim soru tipi"
+                        },
+                        "default_value": null,
+                        "category_id": null,
+                        "required": false,
+                        "statements": [],
+                        "masked": false,
+                        "hide_personal_data": false
+                    }
+                },
+                {
+                    "key": "P1E2",
+                    "type": "next_page",
+                    "template": null,
+                    "triggers": null,
+                    "text_color": null,
+                    "order": 1,
+                    "visible": true,
+                    "body": {
+                        "EN": "Next Page"
+                    },
+                    "detail": {
+                        "options": null,
+                        "statements": null
+                    }
+                }
+            ],
+            "style": "plain",
+            "alias": null,
+            "initial": true
+        },
+        {
+            "number_of_random_elements": null,
+            "key": "P2",
+            "name": "Migration Survey State 2",
+            "elements": [
+                {
+                    "key": "P2E1",
+                    "type": "question",
+                    "template": null,
+                    "triggers": null,
+                    "text_color": null,
+                    "order": 0,
+                    "visible": true,
+                    "detail": {
+                        "key": null,
+                        "scale": null,
+                        "extra": {
+                            "spam_filter_on": true
+                        },
+                        "style": "text",
+                        "weight": null,
+                        "options": [],
+                        "body": {
+                            "EN": "Kısa Metin soru tipi"
+                        },
+                        "default_value": null,
+                        "category_id": null,
+                        "required": false,
+                        "statements": [],
+                        "masked": false,
+                        "hide_personal_data": false
+                    }
+                },
+                {
+                    "key": "P2E2",
+                    "type": "next_page",
+                    "template": null,
+                    "triggers": null,
+                    "text_color": null,
+                    "order": 1,
+                    "visible": true,
+                    "body": {
+                        "EN": "Next Page"
+                    },
+                    "detail": {
+                        "options": null,
+                        "statements": null
+                    }
+                }
+            ],
+            "style": "plain",
+            "alias": null,
+            "initial": false
+        },
+        {
+            "number_of_random_elements": null,
+            "key": "P3",
+            "name": "Migration Survey State 3",
+            "elements": [
+                {
+                    "key": "P3E1",
+                    "type": "question",
+                    "template": null,
+                    "triggers": null,
+                    "text_color": null,
+                    "order": 0,
+                    "visible": true,
+                    "detail": {
+                        "key": "QID10",
+                        "scale": null,
+                        "extra": {
+                            "layout": "horizontal",
+                            "max_option_count": 3
+                        },
+                        "style": "checklist",
+                        "weight": null,
+                        "options": [
+                            {
+                                "description": null,
+                                "question_body": {
+                                    "EN": "Çoklu Seçim soru tipi"
+                                },
+                                "key": "Option 1",
+                                "weight": 0,
+                                "order": 2,
+                                "statement_common_option_id": null,
+                                "body": {
+                                    "EN": "EX"
+                                }
+                            },
+                            {
+                                "description": null,
+                                "question_body": {
+                                    "EN": "Çoklu Seçim soru tipi"
+                                },
+                                "key": "Option 2",
+                                "weight": 0,
+                                "order": 1,
+                                "statement_common_option_id": null,
+                                "body": {
+                                    "EN": "CX"
+                                }
+                            },
+                            {
+                                "description": null,
+                                "question_body": {
+                                    "EN": "Çoklu Seçim soru tipi"
+                                },
+                                "key": "Option 3",
+                                "weight": 0,
+                                "order": 0,
+                                "statement_common_option_id": null,
+                                "body": {
+                                    "EN": "XX"
+                                }
+                            }
+                        ],
+                        "body": {
+                            "EN": "Çoklu Seçim soru tipi"
+                        },
+                        "default_value": null,
+                        "category_id": null,
+                        "required": false,
+                        "statements": [],
+                        "masked": false,
+                        "hide_personal_data": false
+                    }
+                },
+                {
+                    "key": "P3E2",
+                    "type": "question",
+                    "template": null,
+                    "triggers": null,
+                    "text_color": null,
+                    "order": 1,
+                    "visible": true,
+                    "detail": {
+                        "key": null,
+                        "scale": null,
+                        "extra": {
+                            "spam_filter_on": true
+                        },
+                        "style": "text",
+                        "weight": null,
+                        "options": [],
+                        "body": {
+                            "EN": "Kısa Metin Soru tipi 2"
+                        },
+                        "default_value": null,
+                        "category_id": null,
+                        "required": false,
+                        "statements": [],
+                        "masked": false,
+                        "hide_personal_data": false
+                    }
+                },
+                {
+                    "key": "P3E3",
+                    "type": "next_page",
+                    "template": null,
+                    "triggers": null,
+                    "text_color": null,
+                    "order": 2,
+                    "visible": true,
+                    "body": {
+                        "EN": "Next Page"
+                    },
+                    "detail": {
+                        "options": null,
+                        "statements": null
+                    }
+                }
+            ],
+            "style": "plain",
+            "alias": null,
+            "initial": false
+        },
+        {
+            "number_of_random_elements": null,
+            "key": "P4",
+            "name": "Migration Survey State 4",
+            "elements": [
+                {
+                    "key": "P4E1",
+                    "type": "question",
+                    "template": null,
+                    "triggers": null,
+                    "text_color": null,
+                    "order": 0,
+                    "visible": true,
+                    "detail": {
+                        "key": null,
+                        "scale": null,
+                        "extra": {
+                            "layout": "horizontal",
+                            "spam_filter_on": true,
+                            "matrix_answer_type": "single",
+                            "matrix_question_type": "default"
+                        },
+                        "style": "matrix",
+                        "weight": null,
+                        "options": [
+                            {
+                                "description": null,
+                                "question_body": {
+                                    "EN": "Matrix Question"
+                                },
+                                "key": "Red",
+                                "weight": 0,
+                                "order": 2,
+                                "statement_common_option_id": "575e5104-df41-4dec-98f6-b10d4d461516",
+                                "body": {
+                                    "EN": "Red"
+                                }
+                            },
+                            {
+                                "description": null,
+                                "question_body": {
+                                    "EN": "Matrix Question"
+                                },
+                                "key": "Green",
+                                "weight": 0,
+                                "order": 1,
+                                "statement_common_option_id": "4a950354-c6bb-45cd-b62a-3e2182d9373a",
+                                "body": {
+                                    "EN": "Green"
+                                }
+                            },
+                            {
+                                "description": null,
+                                "question_body": {
+                                    "EN": "Matrix Question"
+                                },
+                                "key": "Blue",
+                                "weight": 0,
+                                "order": 0,
+                                "statement_common_option_id": "8fd5f2ed-951e-493e-852c-04133dbbef55",
+                                "body": {
+                                    "EN": "Blue"
+                                }
+                            }
+                        ],
+                        "body": {
+                            "EN": "Matrix Question"
+                        },
+                        "default_value": null,
+                        "category_id": null,
+                        "required": false,
+                        "statements": [
+                            {
+                                "key": "5ddfd5f8-07fa-426f-8260-1a56766b99b7",
+                                "scale": null,
+                                "node_id": null,
+                                "extra": {
+                                    "statement_order": 0
+                                },
+                                "style": "radio",
+                                "weight": null,
+                                "options": [
+                                    {
+                                        "description": null,
+                                        "question_body": {
+                                            "EN": "Neo"
+                                        },
+                                        "key": "Red",
+                                        "weight": 0,
+                                        "order": 2,
+                                        "statement_common_option_id": "575e5104-df41-4dec-98f6-b10d4d461516",
+                                        "body": {
+                                            "EN": "Red"
+                                        }
+                                    },
+                                    {
+                                        "description": null,
+                                        "question_body": {
+                                            "EN": "Neo"
+                                        },
+                                        "key": "Green",
+                                        "weight": 0,
+                                        "order": 1,
+                                        "statement_common_option_id": "4a950354-c6bb-45cd-b62a-3e2182d9373a",
+                                        "body": {
+                                            "EN": "Green"
+                                        }
+                                    },
+                                    {
+                                        "description": null,
+                                        "question_body": {
+                                            "EN": "Neo"
+                                        },
+                                        "key": "Blue",
+                                        "weight": 0,
+                                        "order": 0,
+                                        "statement_common_option_id": "8fd5f2ed-951e-493e-852c-04133dbbef55",
+                                        "body": {
+                                            "EN": "Blue"
+                                        }
+                                    }
+                                ],
+                                "body": {
+                                    "EN": "Neo"
+                                },
+                                "default_value": null,
+                                "category_id": null,
+                                "required": false,
+                                "statements": [],
+                                "masked": false,
+                                "hide_personal_data": false
+                            },
+                            {
+                                "key": "d6345c1c-b94c-497c-832a-edcdd0c65f79",
+                                "scale": null,
+                                "node_id": null,
+                                "extra": {
+                                    "statement_order": 1
+                                },
+                                "style": "radio",
+                                "weight": null,
+                                "options": [
+                                    {
+                                        "description": null,
+                                        "question_body": {
+                                            "EN": "Trinity"
+                                        },
+                                        "key": "Red",
+                                        "weight": 0,
+                                        "order": 2,
+                                        "statement_common_option_id": "575e5104-df41-4dec-98f6-b10d4d461516",
+                                        "body": {
+                                            "EN": "Red"
+                                        }
+                                    },
+                                    {
+                                        "description": null,
+                                        "question_body": {
+                                            "EN": "Trinity"
+                                        },
+                                        "key": "Green",
+                                        "weight": 0,
+                                        "order": 1,
+                                        "statement_common_option_id": "4a950354-c6bb-45cd-b62a-3e2182d9373a",
+                                        "body": {
+                                            "EN": "Green"
+                                        }
+                                    },
+                                    {
+                                        "description": null,
+                                        "question_body": {
+                                            "EN": "Trinity"
+                                        },
+                                        "key": "Blue",
+                                        "weight": 0,
+                                        "order": 0,
+                                        "statement_common_option_id": "8fd5f2ed-951e-493e-852c-04133dbbef55",
+                                        "body": {
+                                            "EN": "Blue"
+                                        }
+                                    }
+                                ],
+                                "body": {
+                                    "EN": "Trinity"
+                                },
+                                "default_value": null,
+                                "category_id": null,
+                                "required": false,
+                                "statements": [],
+                                "masked": false,
+                                "hide_personal_data": false
+                            },
+                            {
+                                "key": "61db105c-e668-4653-ac13-337e91d71fbf",
+                                "scale": null,
+                                "node_id": null,
+                                "extra": {
+                                    "statement_order": 2
+                                },
+                                "style": "radio",
+                                "weight": null,
+                                "options": [
+                                    {
+                                        "description": null,
+                                        "question_body": {
+                                            "EN": "Morpheus"
+                                        },
+                                        "key": "Red",
+                                        "weight": 0,
+                                        "order": 2,
+                                        "statement_common_option_id": "575e5104-df41-4dec-98f6-b10d4d461516",
+                                        "body": {
+                                            "EN": "Red"
+                                        }
+                                    },
+                                    {
+                                        "description": null,
+                                        "question_body": {
+                                            "EN": "Morpheus"
+                                        },
+                                        "key": "Green",
+                                        "weight": 0,
+                                        "order": 1,
+                                        "statement_common_option_id": "4a950354-c6bb-45cd-b62a-3e2182d9373a",
+                                        "body": {
+                                            "EN": "Green"
+                                        }
+                                    },
+                                    {
+                                        "description": null,
+                                        "question_body": {
+                                            "EN": "Morpheus"
+                                        },
+                                        "key": "Blue",
+                                        "weight": 0,
+                                        "order": 0,
+                                        "statement_common_option_id": "8fd5f2ed-951e-493e-852c-04133dbbef55",
+                                        "body": {
+                                            "EN": "Blue"
+                                        }
+                                    }
+                                ],
+                                "body": {
+                                    "EN": "Morpheus"
+                                },
+                                "default_value": null,
+                                "category_id": null,
+                                "required": false,
+                                "statements": [],
+                                "masked": false,
+                                "hide_personal_data": false
+                            }
+                        ],
+                        "masked": false,
+                        "hide_personal_data": false
+                    }
+                },
+                {
+                    "key": "P4E2",
+                    "type": "submit",
+                    "template": null,
+                    "triggers": null,
+                    "text_color": null,
+                    "order": 1,
+                    "visible": true,
+                    "body": {
+                        "EN": "Submit"
+                    },
+                    "detail": {
+                        "options": null,
+                        "statements": null
+                    }
+                }
+            ],
+            "style": "plain",
+            "alias": null,
+            "initial": false
+        }
+    ],
+    "transitions": [],
+    "prevent_customer_comment_email": false,
+    "name": "Migration Survey",
+    "progress_bar_enabled": false,
+    "parent_flow_id": null,
+    "parent_node_ids": [
+        "62e329ad-a119-44dc-b2b1-0d5a5cd3ada4"
+    ],
+    "segments": [],
+    "progress_bar_settings": {},
+    "quota": null,
+    "chat_rating_enabled": false,
+    "quota_message": {},
+    "categories": null,
+    "prevent_multiple_feedback_message": {},
+    "default_language": {
+        "enabled_in_dashboard": true,
+        "name": "English",
+        "is_rtl": false,
+        "code": "EN",
+        "icon_url": null
+    },
+    "status": "active",
+    "is_conversational": false,
+    "allow_customers_to_finish_survey_later": false,
+    "quota_exceeded": null,
+    "prevent_multiple_feedback": false,
+    "chat_rating_setting": null,
+    "languages": [
+        {
+            "enabled_in_dashboard": true,
+            "name": "English",
+            "is_rtl": false,
+            "code": "EN",
+            "icon_url": null
+        }
+    ],
+    "customer_submitted_feedback_before": false,
+    "queue_detail": null,
+    "spam_filter_on": false,
+    "data_retention_settings": {},
+    "prevent_upload": false,
+    "link_expired": null,
+    "force_archive_note": false,
+    "parent_nodes": [
+        {
+            "logo_url": null,
+            "timezone": "Istanbul",
+            "timezone_identifier": "Europe/Istanbul",
+            "name": "Integration",
+            "type": "Account",
+            "logo_v2_object": null,
+            "non_operating_hours_flow_id": null,
+            "report_dashboard_style": "basic",
+            "parent_id": "82a40575-d603-4cd1-af2b-46c9db8a5b81",
+            "id": "62e329ad-a119-44dc-b2b1-0d5a5cd3ada4",
+            "code": "integration",
+            "vertical_id": null,
+            "logo_v2_url": null
+        }
+    ]
+}
