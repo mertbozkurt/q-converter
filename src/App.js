@@ -528,50 +528,74 @@ function App() {
 
                 <div className="json-preview">
                   <h2>File Content</h2>
-                  <table>
-                    <tbody>
-                      {Object.entries(fileContent).map(([key, value]) => (
-                        <tr key={key}>
-                          <td>{key.replace(/([A-Z])/g, ' $1').trim()}</td>
-                          <td>
-                            {typeof value === 'object' && value !== null ? (
-                              <table className="nested-table">
-                                <tbody>
-                                  {Object.entries(value).map(([nestedKey, nestedValue]) => (
-                                    <tr key={`${key}-${nestedKey}`}>
-                                      <td>{nestedKey}</td>
-                                      <td>
-                                        {typeof nestedValue === 'object' && nestedValue !== null ? (
-                                          <table className="nested-table">
-                                            <tbody>
-                                              {Object.entries(nestedValue).map(([deepKey, deepValue]) => (
-                                                <tr key={`${key}-${nestedKey}-${deepKey}`}>
-                                                  <td>{deepKey}</td>
-                                                  <td>
-                                                    {typeof deepValue === 'object' && deepValue !== null ? 
-                                                      JSON.stringify(deepValue, null, 2) : 
-                                                      String(deepValue ?? '')}
-                                                  </td>
-                                                </tr>
-                                              ))}
-                                            </tbody>
-                                          </table>
-                                        ) : (
-                                          String(nestedValue ?? '')
-                                        )}
-                                      </td>
-                                    </tr>
-                                  ))}
-                                </tbody>
-                              </table>
+                  
+                  {/* Card preview visualization */}
+                  <div className="card-preview">
+                    <h3>Card Preview</h3>
+                    <div className="card-grid">
+                      {Object.entries(fileContent).map(([key, value], index) => (
+                        <div key={index} className="preview-card">
+                          <div className="card-header">
+                            <h4>{key.replace(/([A-Z])/g, ' $1').trim()}</h4>
+                          </div>
+                          <div className="card-body">
+                            {key === 'SurveyElements' && Array.isArray(value) ? (
+                              <div className="survey-elements">
+                                {value.map((element, elemIndex) => (
+                                  <details key={elemIndex} className="element-details">
+                                    <summary className="element-summary">
+                                      {element.Element} - {element.PrimaryAttribute || 'No Primary Attribute'}
+                                    </summary>
+                                    <div className="element-content">
+                                      {Object.entries(element).map(([elemKey, elemValue]) => (
+                                        <div key={elemKey} className="stat-item">
+                                          <span className="stat-label">{elemKey}:</span>
+                                          <span className="stat-value">
+                                            {typeof elemValue === 'object' ? (
+                                              <details className="nested-details">
+                                                <summary>View Details</summary>
+                                                <pre className="nested-json">
+                                                  {JSON.stringify(elemValue, null, 2)}
+                                                </pre>
+                                              </details>
+                                            ) : (
+                                              String(elemValue)
+                                            )}
+                                          </span>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </details>
+                                ))}
+                              </div>
+                            ) : typeof value === 'object' && value !== null ? (
+                              <div className="card-stats">
+                                {Object.entries(value).map(([statKey, statValue], statIndex) => (
+                                  <div key={statIndex} className="stat-item">
+                                    <span className="stat-label">{statKey}:</span>
+                                    <span className="stat-value">
+                                      {typeof statValue === 'object' ? (
+                                        <details className="nested-details">
+                                          <summary>View Details</summary>
+                                          <pre className="nested-json">
+                                            {JSON.stringify(statValue, null, 2)}
+                                          </pre>
+                                        </details>
+                                      ) : (
+                                        String(statValue)
+                                      )}
+                                    </span>
+                                  </div>
+                                ))}
+                              </div>
                             ) : (
-                              String(value ?? '')
+                              <div className="single-value">{String(value)}</div>
                             )}
-                          </td>
-                        </tr>
+                          </div>
+                        </div>
                       ))}
-                    </tbody>
-                  </table>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
@@ -835,7 +859,7 @@ function App() {
                         description: {
                             "IR": "ن توصیه میکنم",
                             "IT": "Io consiglio",
-                            "AR": "أنا أوصي",
+                            "AR": "نا أوصي",
                             "ZH-HANS": "我建议",
                             "JA": "私はアドバイスします",
                             "ES-ES": "Yo aconsejo",
