@@ -531,7 +531,7 @@ function App() {
                   
                   {/* Card preview visualization */}
                   <div className="card-preview">
-                    <h3>Card Preview</h3>
+                    
                     <div className="card-grid">
                       {Object.entries(fileContent).map(([key, value], index) => (
                         <div key={index} className="preview-card">
