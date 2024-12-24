@@ -239,7 +239,129 @@ button {
 
 .import-section {
   padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.step-indicator {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.step {
+  position: relative;
+  padding: 1rem;
+  background: #f0f0f0;
+  border-radius: 4px;
+  flex: 1;
+  margin: 0 0.5rem;
   text-align: center;
+  color: #666;
+}
+
+.step.active {
+  background: #5138EE;
+  color: white;
+}
+
+.step.completed {
+  background: #4CAF50;
+  color: white;
+}
+
+.upload-section {
+  text-align: center;
+  padding: 2rem;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.upload-icon {
+  font-size: 3rem;
+  color: #5138EE;
+  margin-bottom: 1rem;
+}
+
+.file-hint {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.mapping-section {
+  margin: 2rem 0;
+}
+
+.mapping-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.mapping-item {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.mapping-source {
+  margin-bottom: 0.5rem;
+}
+
+.mapping-arrow {
+  text-align: center;
+  color: #5138EE;
+  margin: 0.5rem 0;
+}
+
+.mapping-select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.preview-table {
+  margin: 2rem 0;
+  overflow-x: auto;
+}
+
+.preview-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.preview-table th,
+.preview-table td {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.preview-table th {
+  background: #f8f9fa;
+  font-weight: 600;
+}
+
+.preview-table tr:nth-child(even) {
+  background: #f8f9fa;
 }
 
 .card-preview {

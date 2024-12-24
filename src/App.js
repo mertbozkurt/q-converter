@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import Papa from 'papaparse';
 
 function App() {
   const [fileContent, setFileContent] = useState(null);
@@ -12,6 +13,11 @@ function App() {
   const [environment, setEnvironment] = useState('try');
   const [baseUrl, setBaseUrl] = useState('https://api.try.psn.cx');
   const [activeTab, setActiveTab] = useState('converter');
+  const [csvData, setCsvData] = useState(null);
+  const [mappingComplete, setMappingComplete] = useState(false);
+  const [columnMapping, setColumnMapping] = useState({});
+  const [availableQuestionKeys, setAvailableQuestionKeys] = useState([]);
+  const [channelCreated, setChannelCreated] = useState(false);
 
   const environments = [
     { value: 'try', label: 'Try', url: 'https://api.try.psn.cx' },
@@ -92,6 +98,13 @@ function App() {
         const data = await response.json();
         pisanoInput.id = data.id;
         console.log('POST request successful!');
+        
+        // Extract question keys from pisanoInput
+        const questionKeys = pisanoInput.states[0].elements
+          .filter(element => element.type === 'question')
+          .map(element => element.detail.key);
+        
+        setAvailableQuestionKeys(questionKeys);
         
         setProgress(100);
         setProgressStatus('Flow created successfully!');
@@ -193,9 +206,6 @@ function App() {
     link.click();
     URL.revokeObjectURL(url);
   };
-
-
-
 
   const handleStatistics = () => {
     // Check if fileContent exists and has the expected structure
@@ -340,6 +350,12 @@ function App() {
         });
 
         if (assignResponse.ok) {
+          setChannelCreated(true);
+          // Store the channel ID in pisanoInput
+          setPisanoInput(prev => ({
+            ...prev,
+            channelId: data.id
+          }));
           // Create custom alert dialog for campaign creation
           const dialog = document.createElement('div');
           dialog.style.cssText = `
@@ -415,6 +431,64 @@ function App() {
     setActiveTab(tab);
   };
 
+  const handleCsvUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const text = e.target.result;
+        const results = Papa.parse(text, { header: true });
+        setCsvData(results.data);
+        setColumnMapping({});
+        setMappingComplete(false);
+      };
+      reader.readAsText(file);
+    }
+  };
+
+  const handleMappingChange = (csvColumn, questionKey) => {
+    setColumnMapping(prev => ({
+      ...prev,
+      [csvColumn]: questionKey
+    }));
+  };
+
+  const validateMapping = () => {
+    // Add validation logic here
+    setMappingComplete(true);
+  };
+
+  const generatePisanoCsv = () => {
+    const mappedData = csvData.map(row => {
+      // Start with default headers
+      const newRow = {
+        node_id: pisanoInput.channelId,  // Use the channel ID instead of account node ID
+        flow_id: pisanoInput.id,         // From pisanoInput state
+        language: 'EN',                  // Default language
+        customer_id: '',                 // Empty by default
+        customer_name: '',               // Empty by default
+        customer_email: '',              // Empty by default
+        customer_phone_number: '',       // Empty by default
+      };
+
+      // Add mapped question data
+      Object.entries(columnMapping).forEach(([csvCol, pisanoKey]) => {
+        newRow[pisanoKey] = row[csvCol];
+      });
+
+      return newRow;
+    });
+
+    const csv = Papa.unparse(mappedData);
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'pisano-import.csv';
+    a.click();
+    window.URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="App">
       <header className="app-header">
@@ -431,7 +505,9 @@ function App() {
           </button>
           <button 
             className={`tab-button ${activeTab === 'import' ? 'active' : ''}`}
-            onClick={() => handleTabChange('import')}
+            onClick={() => channelCreated ? handleTabChange('import') : null}
+            disabled={!channelCreated}
+            title={!channelCreated ? "Create a link channel first" : ""}
           >
             Data Import
           </button>
@@ -470,7 +546,7 @@ function App() {
               </div>
             </div>
 
-            {pisanoAccount && (
+            {pisanoAccount && pisanoAccount.account && (
               <div className="account-info">
                 <div className="info-grid">
                   <div className="info-item">
@@ -603,7 +679,103 @@ function App() {
         ) : (
           <div className="import-section">
             <h2>Data Import</h2>
-            <p>Data import functionality coming soon...</p>
+            
+            <div className="import-steps">
+              <div className="step-indicator">
+                <div className={`step ${csvData ? 'completed' : 'active'}`}>1. Upload CSV</div>
+                <div className={`step ${csvData ? (mappingComplete ? 'completed' : 'active') : ''}`}>
+                  2. Map Fields
+                </div>
+                <div className={`step ${mappingComplete ? 'active' : ''}`}>3. Generate CSV</div>
+              </div>
+
+              {/* Step 1: File Upload */}
+              <div className="upload-section">
+                <input
+                  type="file"
+                  accept=".csv"
+                  onChange={handleCsvUpload}
+                  className="file-input"
+                  id="csvFileInput"
+                />
+                <label htmlFor="csvFileInput" className="file-label">
+                  <div className="upload-icon">
+                    <i className="fas fa-cloud-upload-alt"></i>
+                  </div>
+                  <span>Choose a CSV file or drag it here</span>
+                  <span className="file-hint">Only CSV files are accepted</span>
+                </label>
+              </div>
+
+              {/* Step 2: Column Mapping */}
+              {csvData && (
+                <div className="mapping-section">
+                  <h3>Map CSV Columns to Question Keys</h3>
+                  <div className="mapping-grid">
+                    {Object.keys(csvData[0] || {}).map((column) => (
+                      <div key={column} className="mapping-item">
+                        <div className="mapping-source">
+                          <strong>CSV Column:</strong> {column}
+                        </div>
+                        <div className="mapping-arrow">↓</div>
+                        <div className="mapping-target">
+                          <select
+                            value={columnMapping[column] || ''}
+                            onChange={(e) => handleMappingChange(column, e.target.value)}
+                            className="mapping-select"
+                          >
+                            <option value="">Select Question Key</option>
+                            {availableQuestionKeys.map((key) => (
+                              <option key={key} value={key}>
+                                {key}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <button 
+                    className="primary-button"
+                    onClick={validateMapping}
+                    disabled={!Object.keys(columnMapping).length}
+                  >
+                    Confirm Mapping
+                  </button>
+                </div>
+              )}
+
+              {/* Step 3: Generate CSV */}
+              {mappingComplete && (
+                <div className="generate-section">
+                  <h3>Generate Pisano-Compatible CSV</h3>
+                  <div className="preview-table">
+                    {/* Preview of mapped data */}
+                    <table>
+                      <thead>
+                        <tr>
+                          {Object.values(columnMapping).map((key) => (
+                            <th key={key}>{key}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {csvData.slice(0, 5).map((row, index) => (
+                          <tr key={index}>
+                            {Object.entries(columnMapping).map(([csvCol, pisanoKey]) => (
+                              <td key={pisanoKey}>{row[csvCol]}</td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <button className="primary-button" onClick={generatePisanoCsv}>
+                    Download Formatted CSV
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         )}
       </main>
