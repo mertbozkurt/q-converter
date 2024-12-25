@@ -459,19 +459,17 @@ function App() {
   };
 
   const generatePisanoCsv = () => {
-    const mappedData = csvData.map(row => {
-      // Start with default headers
+    const mappedData = csvData.slice(2).map(row => {
       const newRow = {
-        node_id: pisanoInput.channelId,  // Use the channel ID instead of account node ID
-        flow_id: pisanoInput.id,         // From pisanoInput state
-        language: 'EN',                  // Default language
-        customer_id: '',                 // Empty by default
-        customer_name: '',               // Empty by default
-        customer_email: '',              // Empty by default
-        customer_phone_number: '',       // Empty by default
+        node_id: pisanoInput.channelId,
+        flow_id: pisanoInput.id,
+        language: fileContent.SurveyEntry.SurveyLanguage,
+        customer_id: '',
+        customer_name: '',
+        customer_email: '',
+        customer_phone_number: '',
       };
 
-      // Add mapped question data
       Object.entries(columnMapping).forEach(([csvCol, pisanoKey]) => {
         newRow[pisanoKey] = row[csvCol];
       });
@@ -725,7 +723,7 @@ function App() {
                             className="mapping-select"
                           >
                             <option value="">Select Question Key</option>
-                            {availableQuestionKeys.map((key) => (
+                            {availableQuestionKeys.sort().map((key) => (
                               <option key={key} value={key}>
                                 {key}
                               </option>
@@ -760,7 +758,7 @@ function App() {
                         </tr>
                       </thead>
                       <tbody>
-                        {csvData.slice(0, 5).map((row, index) => (
+                        {csvData.slice(2, 7).map((row, index) => (
                           <tr key={index}>
                             {Object.entries(columnMapping).map(([csvCol, pisanoKey]) => (
                               <td key={pisanoKey}>{row[csvCol]}</td>
